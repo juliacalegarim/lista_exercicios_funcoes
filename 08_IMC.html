@@ -1,16 +1,57 @@
 <script>
-    /*
-    PROBLEMA: CÁLCULO DO IMC
-    Desenvolva um programa que contenha uma função que calcule o IMC de uma pessoa. A fórmula para o cálculo do IMC é a seguinte:
-    IMC = peso / altura²
-    */
+   
+ let altura = Number(prompt("Qual sua altura?\n\n(Responda em metros e use ponto ao invés de vírgula)"));
+    while (isNaN(altura)) {
+        alert("Responda apenas com valores numéricos!");
+        altura = Number(prompt("Qual sua altura?\n\n(Responda em metros e use ponto ao invés de vírgula)"));}
+    
+    let peso = Number(prompt("Qual seu peso?\n\n(Use ponto ao invés de vírgula)"));
+    while (isNaN(peso)) {
+        alert("Responda apenas com valores numéricos!");
+        peso = Number(prompt("Qual seu peso?\n\n(Use ponto ao invés de vírgula)"));}
+    
+    let imc;
+    let nivel;
+    
+    function IMC() {
+        imc = peso / altura ** 2;
 
-    //ENTRADA
+        switch (true) {
+                
+            case (imc <= 18.5):
+            nivel = " abaixo do peso";
+            break;
+                
+            case (imc <= 25):
+            nivel = " no peso normal";
+            break;
+                
+            case (imc <= 30):
+            nivel = " com sobrepeso";
+            break;
 
-
-    //PROCESSAMENTO
-
-
-    //SAÍDA
+            case (imc > 35):
+            switch (true) {
+                    
+                    default:
+                    nivel = " com obesidade grau I";
+                    break;
+                    
+                    case (imc < 40):
+                    nivel = " com obesidade grau II";
+                    break;
+                        
+                    case (imc >= 40):
+                    nivel = " com obesidade grau III";
+                    break;}
+            break;
+                
+            default:
+            nivel = " em desnutrição";
+            break;}
+    
+    alert("O seu IMC é de " + imc.toFixed(1) + " e você está" + nivel);}
+  
+  IMC();
 
 </script>
